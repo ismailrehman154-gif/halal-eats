@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Smokum&family=Titan+One&display=swap" rel="stylesheet">
+  <title>Halal Eats</title>
+</head>
+<body>
+  <h1>Halal Eats</h1>
+  <p>My list of halal spots.</p>
+
+  <!-- this form sends a new spot to the server when you hit the button -->
+  <!-- action is the url it sends to, method POST means "new data, save it" -->
+  <form action="/spots" method="POST">
+    <!-- whatever you type in each input gets saved under its name in the database -->
+    <input type="text" name="name" placeholder="Spot name">
+    <input type="text" name="cuisine" placeholder="Cuisine, like Yemeni or Desi">
+    <input type="text" name="neighborhood" placeholder="Neighborhood">
+    <input type="number" name="rating" placeholder="Rating out of 10" min="0" max="10">
+    <input type="text" name="notes" placeholder="Notes">
+    <button type="submit">Add Spot</button>
+</form>
+    <h2>Saved Spots</h2>
+        <ul>
+            <!-- loop through the spots array, the body of the loop runs once per spot -->
+            <% for (let i = 0; i < spots.length; i++) { %>
+                <li>
+                <!-- print each field of this one spot, spots[i] is the spot we are on -->
+                <h3><%= spots[i].name %></h3>         <!-- note for all of these spans, we call 'spots' in the server side, as {spots: results} so it can be used over here -->
+                <span>Cuisine: <%= spots[i].cuisine %></span> <br>
+                <span>Location: <%= spots[i].neighborhood %></span> <br>
+                <span>Rating: <%= spots[i].rating %>/10</span> <br>
+                <span> - <%= spots[i].notes %></span>
+                    <br>
+                <!-- a button for this spot only,(make sure to switch the type, becuase it defaults to submit) it carries the spot's real database id in data-id, it targets the -id in the database, and each LI would have its own button -->
+                <button type="button" class="update-rating" data-id="<%= spots[i]._id %>">Update Rating</button>
+
+                <!-- a delete button for this spot only, carries the same real id, type="button" so it never submits the form -->
+                <button type="button" class="delete-spot" data-id="<%= spots[i]._id %>">Delete</button>
+
+
+                </li>
+            <% } %>
+        </ul>
+
+  
+
+  <script src="/main.js"></script>
+</body>
+</html>
