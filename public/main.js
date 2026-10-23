@@ -1,4 +1,4 @@
-const deleteButtons = document.querySelectorAll('.delete-spot') // grabbing all the delete buttons on the page(index.ejs)
+const deleteButtons = document.querySelectorAll('.delete-spot') // grabbing all the delete buttons on the page (index.ejs)
 
 //grab every update rating button on the index.ejs page
 const updateButtons = document.querySelectorAll('.update-rating')
@@ -43,7 +43,7 @@ deleteButtons.forEach(button => {
             // use the id, so it will delete that specific location and if there are two documents with the same name it knows to target the appropriate one thats clicked on
             body: JSON.stringify({ id: button.dataset.id })
         }).then(res => {
-            // if the response is valid and works, reload the page
+            // if the response works, reload the page
             if (res.ok) location.reload()
         })
     })

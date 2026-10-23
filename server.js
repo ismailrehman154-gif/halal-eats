@@ -77,7 +77,7 @@ MongoClient.connect(connectionString)
         spotsCollection
             .findOneAndDelete({ _id: new ObjectId(req.body.id) })
             .then(() => {
-                //send some json so the browser knows the delete went through
+                
                 res.json('SPot Deleted')
         })
         .catch(error => console .error(error))
