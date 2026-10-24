@@ -2,6 +2,8 @@
 
 My personal list of halal food spots, built so I stop forgetting the good ones. Add a spot, rate it, keep notes on it, and pull the whole list up from anywhere.
 
+**Live site:** https://halal-eats-ismail.onrender.com
+
 ![Halal Eats app](screenshot.png)
 
 ## What it does
